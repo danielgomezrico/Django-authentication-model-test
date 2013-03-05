@@ -8,8 +8,8 @@ You can't see the list of people if you are not logged.
 
 User that can be used to login is: 
 
-+ name: daniel
-+ pass: daniel*
+. name: daniel
+. pass: daniel*
 
 For user Authentication I've used default Django view
 (django.contrib.auth.views.login)
