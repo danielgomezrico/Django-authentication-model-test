@@ -1,0 +1,29 @@
+<link rel="stylesheet" href={{ STATIC_URL }}style.css />
+
+{% if people_list %}
+
+	<table>
+	<tr>
+		<th>Name</th>
+		<th>E-mail</th>
+		<th>URL</th>
+	</tr>
+
+		{% for person in people_list %}
+	<tr>
+		<td>
+			{{ person.name }}
+	   	</td>
+	   	<td>
+	   		{{ person.email }}
+	   	</td>
+	   	<td>
+			<a href="{{person.url}}">{{ person.url }}</a>
+	   	</td>
+	</tr>
+	     {% endfor %}
+{% else %}
+    <p>No people are available.</p>
+{% endif %}
+
+<a href="/registration/logout" class="button">log out</a>
