@@ -1,5 +1,41 @@
 <link rel="stylesheet" href={{ STATIC_URL }}style.css />
 
+<script type="text/javascript"
+
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+
+</script>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		//get is a shorthand Ajax Jquery function 
+		$.get("/people/", function(data) {
+
+			var people = eval('(' + data + ')');
+			var peopleTable = $('#peopleTable');
+
+			for (var i = 0; i < people.length; i++){
+				peopleTable.append("<tr><td>" + people[i].fields.name + "</td>"+
+				"<td>" + people[i].fields.email + "</td>"+
+				'<td> <a href= "' + people[i].fields.url + '">' + people[i].fields.url + "</a></td></tr>");
+			}
+		});
+	});
+
+
+</script>
+
+<table id="peopleTable">
+	<tr>
+		<th>Name</th>
+		<th>E-mail</th>
+		<th>URL</th>
+	</tr>
+</table>
+
+<!--
 {% if people_list %}
 
 	<table>
@@ -9,7 +45,7 @@
 		<th>URL</th>
 	</tr>
 
-		{% for person in people_list %}
+	{% for person in people_list %}
 	<tr>
 		<td>
 			{{ person.name }}
@@ -21,9 +57,10 @@
 			<a href="{{person.url}}">{{ person.url }}</a>
 	   	</td>
 	</tr>
-	     {% endfor %}
+	{% endfor %}
 {% else %}
     <p>No people are available.</p>
 {% endif %}
-
+-->
+<br/>
 <a href="/registration/logout" class="button">log out</a>
